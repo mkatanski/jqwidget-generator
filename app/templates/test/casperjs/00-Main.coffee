@@ -3,11 +3,11 @@
 #==========================================================================
 
 #
-# * @author: Michal Katanski (mkatanski@nexway.com)
-# * @version: 0.0.1
-# *
-# * Basic tests which check general plugin behaviour and correct
-# * initialisation as well as basic translations editing.
+# @author: <%= author_name %> (<%= author_mail %>)
+# @version: 0.0.1
+#
+# Basic tests which check general plugin behaviour and correct
+# initialisation as well as basic translations editing.
 #
 
 #==========  HELPER METHODS AND VARIABLES  ==========
@@ -26,7 +26,7 @@ casper.test.begin "Initialization by ID", 0, (test) ->
   initializeMultiple = ->
     isInit = ""
     try
-      $("#pluginName").AddressDetectionWidget
+      $("#<%= plugin_name %>").AddressDetectionWidget
         debug: false
     catch e
       isInit = e.message
@@ -49,7 +49,7 @@ casper.test.begin "Initialization by class", 0, (test) ->
   initializeSingle = ->
     isInit = ""
     try
-      $(".pluginName-wrapper").AddressDetectionWidget
+      $(".<%= plugin_name %>-wrapper").AddressDetectionWidget
         debug: true
     catch e
       isInit = e.message
