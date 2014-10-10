@@ -3,6 +3,7 @@ var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
+var capitalize = require('capitalize');
 
 var JqWidgetGenerator = yeoman.generators.Base.extend({
   initializing: function () {
@@ -50,8 +51,8 @@ var JqWidgetGenerator = yeoman.generators.Base.extend({
 
       var context = {
         plugin_name: this._.classify(this.widgetName),
-        plugin_full_name: this._.humanize(this.widgetName),
-        author_name: this._.humanize(this.authorName),
+        plugin_full_name: capitalize.words(this.widgetName),
+        author_name: capitalize.words(this.authorName),
         author_mail: this.authorMail,
 
         // Gruntfile variables fix
