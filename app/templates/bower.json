@@ -1,0 +1,13 @@
+{
+  "name": "pluginName",
+  "version": "0.1.0",
+  "dependencies": {
+    "es5-shim": "~3.1.0",
+    "bootstrap": "~3.2.0",
+    "jquery": "^1.11.1"
+  },
+  "devDependencies": {
+
+  },
+  "appPath": "plugin"
+}
