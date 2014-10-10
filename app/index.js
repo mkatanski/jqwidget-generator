@@ -18,31 +18,64 @@ var JqWidgetGenerator = yeoman.generators.Base.extend({
     ));
 
     var prompts = [{
-      type: 'confirm',
-      name: 'someOption',
-      message: 'Would you like to enable this option?',
-      default: true
+      name: 'widgetName',
+      message: 'What is your widget name?',
+      default: 'jqueryWidget'
+    },{
+      name: 'authorName',
+      message: 'What is your name?',
+      default: ''
+    },{
+      name: 'authorMail',
+      message: 'What is your contact e-mail?',
+      default: ''
     }];
 
     this.prompt(prompts, function (props) {
-      this.someOption = props.someOption;
-
+      this.widgetName = props.widgetName;
+      this.authorName = props.authorName;
+      this.authorMail = props.authorMail;
       done();
     }.bind(this));
   },
 
   writing: {
     app: function () {
-      this.dest.mkdir('app');
-      this.dest.mkdir('app/templates');
+      this.dest.mkdir('plugin');
+      this.dest.mkdir('plugin/coffee');
+      this.dest.mkdir('plugin/less');
+      this.dest.mkdir('plugin/styles');
+      this.dest.mkdir('test');
+      this.dest.mkdir('test/casperjs');
 
-      this.src.copy('_package.json', 'package.json');
-      this.src.copy('_bower.json', 'bower.json');
-    },
+      var context = {
+        plugin_name: this.widgetName
+      };
 
-    projectfiles: function () {
-      this.src.copy('editorconfig', '.editorconfig');
-      this.src.copy('jshintrc', '.jshintrc');
+      // Main files
+      this.template("package.json", "package.json", context);
+      this.template("bower.json", "bower.json", context);
+      this.template("README.md", "README.md", context);
+      this.template("Gruntfile.js", "Gruntfile.js", context);
+
+      this.src.copy('.travis.yml', '.travis.yml');
+      this.src.copy('.jshintrc', '.jshintrc');
+      this.src.copy('.gitignore', '.gitignore');
+      this.src.copy('.gitattributes', '.gitattributes');
+      this.src.copy('.editorconfig', '.editorconfig');
+      this.src.copy('.bowerrc', '.bowerrc');
+
+      //Plugin
+      this.template("plugin/index.html", "plugin/index.html", context);
+      this.template("plugin/coffee/pluginBase.coffee", "plugin/coffee/"+context.plugin_name+".coffee", context);
+
+      this.src.copy('plugin/favicon.ico', 'plugin/favicon.ico');
+      this.src.copy('plugin/.buildignore', 'plugin/.buildignore');
+      this.src.copy('plugin/coffee/Plugin.coffee', 'plugin/coffee/Plugin.coffee');
+      this.src.copy('plugin/less/mixins.less', 'plugin/less/mixins.less');
+      this.src.copy('plugin/less/variables.less', 'plugin/less/variables.less');
+      this.src.copy('plugin/less/pluginName.less', 'plugin/less/'+context.plugin_name+'.less');
+      this.src.copy('plugin/styles/demo.css', 'plugin/styles/demo.css');
     }
   },
 
