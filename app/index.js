@@ -20,7 +20,7 @@ var JqWidgetGenerator = yeoman.generators.Base.extend({
     var prompts = [{
       name: 'widgetName',
       message: 'What is your widget name?',
-      default: 'jqueryWidget'
+      default: this.determineAppname()
     },{
       name: 'authorName',
       message: 'What is your name?',
@@ -49,7 +49,21 @@ var JqWidgetGenerator = yeoman.generators.Base.extend({
       this.dest.mkdir('test/casperjs');
 
       var context = {
-        plugin_name: this.widgetName
+        plugin_name: this._.classify(this.widgetName),
+        plugin_full_name: this._.humanize(this.widgetName),
+        author_name: this._.humanize(this.authorName),
+        author_mail: this.authorMail,
+
+        // Gruntfile variables fix
+        yeoman: {
+          app: '<%= yeoman.app %>',
+          dist: '<%= yeoman.dist %>',
+        },
+        connect: {
+          options: {
+            livereload: '<%= connect.options.livereload %>'
+          }
+        }
       };
 
       // Main files
@@ -69,12 +83,12 @@ var JqWidgetGenerator = yeoman.generators.Base.extend({
       this.template("plugin/index.html", "plugin/index.html", context);
       this.template("plugin/coffee/pluginBase.coffee", "plugin/coffee/"+context.plugin_name+".coffee", context);
       this.template('plugin/less/pluginName.less', 'plugin/less/'+context.plugin_name+'.less', context);
+      this.template('plugin/less/mixins.less', 'plugin/less/mixins.less', context);
+      this.template('plugin/less/variables.less', 'plugin/less/variables.less', context);
 
       this.src.copy('plugin/favicon.ico', 'plugin/favicon.ico');
       this.src.copy('plugin/.buildignore', 'plugin/.buildignore');
       this.src.copy('plugin/coffee/Plugin.coffee', 'plugin/coffee/Plugin.coffee');
-      this.src.copy('plugin/less/mixins.less', 'plugin/less/mixins.less');
-      this.src.copy('plugin/less/variables.less', 'plugin/less/variables.less');
       this.src.copy('plugin/styles/demo.css', 'plugin/styles/demo.css');
 
       //Test

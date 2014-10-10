@@ -2,7 +2,7 @@
   <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title><%= plugin_name %></title>
+    <title><%= plugin_full_name %></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -54,7 +54,7 @@
             <h4 class="modal-title" id="myModalLabel">Contact</h4>
           </div>
           <div class="modal-body">
-            Michal Katanski <a href="mailto:mkatanski@nexway.com">&lt;mkatanski@nexway.com&gt;</a>
+            <%= author_name %> <a href="mailto:<%= author_mail %>">&lt;<%= author_mail %>&gt;</a>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
@@ -84,9 +84,7 @@
     <script>
 
       // WIDGET INITIALIZATION
-      $('#addressDetectionWidget').AddressDetectionWidget({
-          formId: '#testForm'
-      });
+      $('#<%= plugin_name %>').<%= plugin_name %>();
 
 
       // DEMO SCRIPTS

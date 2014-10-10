@@ -4,7 +4,7 @@
 #
 # Main <%= plugin_name %> class
 #
-# @author   Michal Katanski (mkatanski@nexway.com)
+# @author   <%= author_name %> (<%= author_mail %>)
 # @version 0.0.1
 class <%= plugin_name %> extends Plugin
 
