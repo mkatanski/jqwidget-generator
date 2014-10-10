@@ -2,11 +2,11 @@
 #import Plugin
 
 #
-# Main pluginName class
+# Main <%= plugin_name %> class
 #
 # @author   Michal Katanski (mkatanski@nexway.com)
-# @version 0.0.3
-class pluginName extends Plugin
+# @version 0.0.1
+class <%= plugin_name %> extends Plugin
 
   #default options
   defaultOptions = {}
@@ -37,7 +37,7 @@ class pluginName extends Plugin
 
 (($, window, document, undefined_) ->
 
-  pluginName = "pluginName"
+  pluginName = "<%= plugin_name %>"
   $.fn[pluginName] = (options, languages) ->
     count = 0
     instanceCount = @.length
@@ -51,7 +51,7 @@ class pluginName extends Plugin
         count = '#' + $(this).attr('id')
 
       instanceName = pluginName + '_' + count
-      newInstance = new pluginName(this, options, instanceName, pluginName, languages)
+      newInstance = new <%= plugin_name %>(this, options, instanceName, pluginName, languages)
       unless $.data(this, instanceName)
         $.data this, instanceName, newInstance
         newInstance.init()

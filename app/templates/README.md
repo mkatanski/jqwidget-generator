@@ -1,4 +1,4 @@
-pluginName v.0.0.1
+<%= plugin_name %> v.0.0.1
 ===================
 
 Retrieves user localization and tries to find his current address using google maps api. After that it automatically fill HTML form with collected values. Widget is using browser geolocalization functionality. The list of supported browsers are [here.](http://caniuse.com/#feat=geolocation) 

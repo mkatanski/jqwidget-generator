@@ -315,8 +315,8 @@ module.exports = function (grunt) {
     percolator: {
       compile: {
         source: '<%= yeoman.app %>/coffee/',
-        output: '.tmp/scripts/pluginName.js',
-        main: 'pluginName.coffee',
+        output: '.tmp/scripts/<%= plugin_name %>.js',
+        main: '<%= plugin_name %>.coffee',
         compile: true,
         //opts: '--bare'
       }
@@ -328,7 +328,7 @@ module.exports = function (grunt) {
           paths: ["<%= yeoman.app %>/less"]
         },
         files: {
-          ".tmp/styles/pluginName.css": "<%= yeoman.app %>/less/pluginName.less"
+          ".tmp/styles/<%= plugin_name %>.css": "<%= yeoman.app %>/less/<%= plugin_name %>.less"
         }
       }
     },

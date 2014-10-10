@@ -8,21 +8,21 @@
 
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="styles/demo.css">
-    <link rel="stylesheet" href="styles/pluginName.css">
+    <link rel="stylesheet" href="styles/<%= plugin_name %>.css">
 
   </head>
   <body>
     <div class="container">
       <div id="pluginPlayground" class="examples">
 
-        <div id="addressDetectionWidget" class="addressDetectionWidget"></div>
+        <div id="<%= plugin_name %>" class="<%= plugin_name %>-wrapper"></div>
 
       </div>
     </div>
 
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="scripts/pluginName.js"></script>
+    <script src="scripts/<%= plugin_name %>.js"></script>
 
   </body>
 </html>

@@ -68,14 +68,20 @@ var JqWidgetGenerator = yeoman.generators.Base.extend({
       //Plugin
       this.template("plugin/index.html", "plugin/index.html", context);
       this.template("plugin/coffee/pluginBase.coffee", "plugin/coffee/"+context.plugin_name+".coffee", context);
+      this.template('plugin/less/pluginName.less', 'plugin/less/'+context.plugin_name+'.less', context);
 
       this.src.copy('plugin/favicon.ico', 'plugin/favicon.ico');
       this.src.copy('plugin/.buildignore', 'plugin/.buildignore');
       this.src.copy('plugin/coffee/Plugin.coffee', 'plugin/coffee/Plugin.coffee');
       this.src.copy('plugin/less/mixins.less', 'plugin/less/mixins.less');
       this.src.copy('plugin/less/variables.less', 'plugin/less/variables.less');
-      this.src.copy('plugin/less/pluginName.less', 'plugin/less/'+context.plugin_name+'.less');
       this.src.copy('plugin/styles/demo.css', 'plugin/styles/demo.css');
+
+      //Test
+      this.template("test/test.html", "test/test.html", context);
+      this.template("test/casperjs/00-Main.coffee", "test/casperjs/00-Main.coffee", context);
+
+      this.src.copy('test/.jshintrc', 'test/.jshintrc');
     }
   },
 
