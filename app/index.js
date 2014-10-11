@@ -75,7 +75,7 @@ var JqWidgetGenerator = yeoman.generators.Base.extend({
 
       this.src.copy('.travis.yml', '.travis.yml');
       this.src.copy('.jshintrc', '.jshintrc');
-      this.src.copy('.gitignore', '.gitignore');
+      this.src.copy('_gitignor', '.gitignore');
       this.src.copy('.gitattributes', '.gitattributes');
       this.src.copy('.editorconfig', '.editorconfig');
       this.src.copy('.bowerrc', '.bowerrc');
