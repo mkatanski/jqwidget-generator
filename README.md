@@ -1,4 +1,4 @@
-# generator-jq_widget [![Build Status](https://secure.travis-ci.org/mkatanski/generator-jq-widget.png?branch=master)](https://travis-ci.org/mkatanski/generator-jq-widget)
+# generator-jq_widget
 
 > [Yeoman](http://yeoman.io) generator
 
