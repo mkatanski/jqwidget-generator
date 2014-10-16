@@ -26,7 +26,7 @@ casper.test.begin "Initialization by ID", 0, (test) ->
   initializeMultiple = ->
     isInit = ""
     try
-      $("#<%= plugin_name %>").AddressDetectionWidget
+      $("#<%= plugin_name %>").<%= plugin_name %>
         debug: false
     catch e
       isInit = e.message
@@ -49,7 +49,7 @@ casper.test.begin "Initialization by class", 0, (test) ->
   initializeSingle = ->
     isInit = ""
     try
-      $(".<%= plugin_name %>-wrapper").AddressDetectionWidget
+      $(".<%= plugin_name %>-wrapper").<%= plugin_name %>
         debug: true
     catch e
       isInit = e.message

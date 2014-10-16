@@ -282,7 +282,12 @@ module.exports = function (grunt) {
           cwd: 'bower_components/bootstrap/dist',
           src: 'fonts/*',
           dest: '<%= yeoman.dist %>'
-        }]
+        }, {
+            expand: true,
+            cwd: '.tmp/scripts',
+            dest: '<%= yeoman.dist %>/scripts',
+            src: ['<%= plugin_name %>.js']
+         }]
       },
       styles: {
         expand: true,
@@ -333,6 +338,31 @@ module.exports = function (grunt) {
       }
     },
 
+     replace: {
+        min: {
+          src: ['<%= yeoman.dist %>/scripts/<%= plugin_name %>.min.js'],
+          dest: '<%= yeoman.dist %>/scripts/legacy/<%= plugin_name %>-legacy.min.js',
+          replacements: [{
+            from: /\(function\(\){/,
+            to: 'jQuery(function($){'
+          }, {
+            from: '.call(this);',
+            to: ';'
+          }]
+        },
+        full: {
+          src: ['<%= yeoman.dist %>/scripts/<%= plugin_name %>.js'],
+          dest: '<%= yeoman.dist %>/scripts/legacy/<%= plugin_name %>-legacy.js',
+          replacements: [{
+            from: /\(function\(\) {/,
+            to: 'jQuery(function($) {'
+          }, {
+            from: '}).call(this);',
+            to: '});'
+          }]
+        },
+    }
+
   });
 
 
@@ -379,7 +409,8 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'replace'
   ]);
 
   grunt.registerTask('default', [

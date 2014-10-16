@@ -1,13 +1,12 @@
 {
   "name": "<%= plugin_name %>",
-  "version": "0.0.1",
   "dependencies": {
+    
+  },
+  "devDependencies": {
     "es5-shim": "~3.1.0",
     "bootstrap": "~3.2.0",
     "jquery": "^1.11.1"
-  },
-  "devDependencies": {
-
   },
   "appPath": "plugin"
 }
