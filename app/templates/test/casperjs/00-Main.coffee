@@ -49,7 +49,7 @@ casper.test.begin "Initialization by class", 0, (test) ->
   initializeSingle = ->
     isInit = ""
     try
-      $(".<%= plugin_name %>-wrapper").<%= plugin_name %>
+      $(".<%= plugin_name %>").<%= plugin_name %>
         debug: true
     catch e
       isInit = e.message
