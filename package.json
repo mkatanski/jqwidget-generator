@@ -1,6 +1,6 @@
 {
   "name": "generator-jq-widget",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Generate base configuration for creating jQuery Widgets.",
   "license": "MIT",
   "main": "app/index.js",

@@ -8,8 +8,8 @@
 class Plugin
     #default settings
     defaultOptions =
-      debug:    false
-      messageScope: 'warning'
+      debug:         false
+      messageScope:  'warning'
 
     constructor: (element, options, instanceName) ->
       # initial plugin element
@@ -49,7 +49,7 @@ class Plugin
 
     getPluginByInstanceName: (domElement, instName, numeric=-1, callback) ->
       return $.data(domElement, instName)
-      
+
 
     runForEachInstance: (selector, callback) ->
       i = 0
