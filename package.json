@@ -26,7 +26,8 @@
     "yeoman-generator": "^0.17.0",
     "chalk": "^0.5.0",
     "yosay": "^0.3.0",
-    "capitalize": "^0.5.0"
+    "capitalize": "^0.5.0",
+    "slug": "0.8.0"
   },
   "devDependencies": {
     "mocha": "*"

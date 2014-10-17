@@ -4,6 +4,7 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var capitalize = require('capitalize');
+var slug = require('slug');
 
 var JqWidgetGenerator = yeoman.generators.Base.extend({
   initializing: function () {
@@ -30,12 +31,17 @@ var JqWidgetGenerator = yeoman.generators.Base.extend({
       name: 'authorMail',
       message: 'What is your contact e-mail?',
       default: ''
+    },{
+      name: 'shortDescription',
+      message: 'Short plugin/widget description',
+      default: ''
     }];
 
     this.prompt(prompts, function (props) {
       this.widgetName = props.widgetName;
       this.authorName = props.authorName;
       this.authorMail = props.authorMail;
+      this.shortDescription = props.shortDescription;
       done();
     }.bind(this));
   },
@@ -54,6 +60,8 @@ var JqWidgetGenerator = yeoman.generators.Base.extend({
         plugin_full_name: capitalize.words(this.widgetName),
         author_name: capitalize.words(this.authorName),
         author_mail: this.authorMail,
+        short_description: this.shortDescription,
+        plugin_name_dashed: slug(this.widgetName.toLowerCase()),
 
         // Gruntfile variables fix
         yeoman: {
