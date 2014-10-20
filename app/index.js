@@ -51,7 +51,8 @@ var JqWidgetGenerator = yeoman.generators.Base.extend({
       this.dest.mkdir('plugin');
       this.dest.mkdir('plugin/coffee');
       this.dest.mkdir('plugin/less');
-      this.dest.mkdir('plugin/styles');
+      this.dest.mkdir('plugin/demo');
+      this.dest.mkdir('plugin/demo/styles');
       this.dest.mkdir('test');
       this.dest.mkdir('test/casperjs');
 
@@ -67,6 +68,8 @@ var JqWidgetGenerator = yeoman.generators.Base.extend({
         yeoman: {
           app: '<%= yeoman.app %>',
           dist: '<%= yeoman.dist %>',
+          name: '<%= yeoman.name %>',
+          demo: '<%= yeoman.demo %>'
         },
         connect: {
           options: {
@@ -89,16 +92,16 @@ var JqWidgetGenerator = yeoman.generators.Base.extend({
       this.src.copy('.bowerrc', '.bowerrc');
 
       //Plugin
-      this.template("plugin/index.html", "plugin/index.html", context);
+      this.template("plugin/demo/index.html", "plugin/demo/index.html", context);
       this.template("plugin/coffee/pluginBase.coffee", "plugin/coffee/"+context.plugin_name+".coffee", context);
       this.template('plugin/less/pluginName.less', 'plugin/less/'+context.plugin_name+'.less', context);
       this.template('plugin/less/mixins.less', 'plugin/less/mixins.less', context);
       this.template('plugin/less/variables.less', 'plugin/less/variables.less', context);
 
-      this.src.copy('plugin/favicon.ico', 'plugin/favicon.ico');
+      this.src.copy('plugin/demo/favicon.ico', 'plugin/demo/favicon.ico');
       this.src.copy('plugin/.buildignore', 'plugin/.buildignore');
       this.src.copy('plugin/coffee/Plugin.coffee', 'plugin/coffee/Plugin.coffee');
-      this.src.copy('plugin/styles/demo.css', 'plugin/styles/demo.css');
+      this.src.copy('plugin/demo/styles/demo.css', 'plugin/demo/styles/demo.css');
 
       //Test
       this.template("test/test.html", "test/test.html", context);
