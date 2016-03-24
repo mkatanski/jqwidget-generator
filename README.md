@@ -32,7 +32,7 @@ npm install -g generator-jq-widget
 Finally, initiate the generator:
 
 ```bash
-yo jq_widget
+yo jq-widget
 ```
 
 ### Getting To Know Yeoman
